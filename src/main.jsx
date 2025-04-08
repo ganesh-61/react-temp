@@ -5,7 +5,7 @@ import App from './App.jsx'
 // import App19 from './components/App19.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )
