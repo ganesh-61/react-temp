@@ -1,49 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+// Button component with default props
+const Button = ({ label, color, onClick }) => {
+  return (
+    <button
+      style={{ ...styles.button, backgroundColor: color }}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  );
+};
 
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
-  const reset = () => setCount(0);
+// Default props
+Button.defaultProps = {
+  label: 'Click Me',
+  color: '#3498db',
+  onClick: () => alert('Button clicked!'),
+};
 
+const App = () => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>React Counter</h1>
-      <p style={styles.counter}>Count: {count}</p>
-      <div>
-        <button style={styles.button} onClick={increment}>Increment</button>
-        <button style={styles.button} onClick={decrement}>decrement</button>
-        <button style={{ ...styles.button, backgroundColor: '#e74c3c' }} onClick={reset}>Reset</button>
-      </div>
+      <h2>Default Props Example</h2>
+      <Button label="Submit" color="#2ecc71" onClick={() => alert('Submitted!')} />
+      <Button label="Delete" color="#e74c3c" />
+      <Button />
     </div>
   );
 };
 
 const styles = {
   container: {
+    padding: '40px',
+    fontFamily: 'Arial, sans-serif',
     textAlign: 'center',
-    marginTop: '50px',
-    fontFamily: 'Arial, sans-serif'
-  },
-  heading: {
-    fontSize: '2em',
-    marginBottom: '20px'
-  },
-  counter: {
-    fontSize: '1.5em',
-    marginBottom: '20px'
   },
   button: {
-    margin: '5px',
     padding: '10px 20px',
-    fontSize: '1em',
-    cursor: 'pointer',
-    backgroundColor: '#3498db',
+    fontSize: '16px',
     color: '#fff',
     border: 'none',
-    borderRadius: '5px'
-  }
+    borderRadius: '6px',
+    margin: '10px',
+    cursor: 'pointer',
+  },
 };
 
-export default Counter;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
