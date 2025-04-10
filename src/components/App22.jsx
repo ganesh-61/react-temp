@@ -4,6 +4,7 @@ const Counter = () => {
   const [count, setCount] = useState(0);
 
   const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
   const reset = () => setCount(0);
 
   return (
@@ -12,6 +13,7 @@ const Counter = () => {
       <p style={styles.counter}>Count: {count}</p>
       <div>
         <button style={styles.button} onClick={increment}>Increment</button>
+        <button style={styles.button} onClick={decrement}>decrement</button>
         <button style={{ ...styles.button, backgroundColor: '#e74c3c' }} onClick={reset}>Reset</button>
       </div>
     </div>
